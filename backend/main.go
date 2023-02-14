@@ -8,9 +8,20 @@ import (
 	"net/http"
 
 	"github.com/gorilla/mux"
+	"github.com/rs/cors"
 )
 
 func main() {
+
+	cors := cors.New(cors.Options{
+		AllowedOrigins: []string{"*"},
+		AllowedMethods: []string{
+			http.MethodPost,
+			http.MethodGet,
+		},
+		AllowedHeaders:   []string{"*"},
+		AllowCredentials: false,
+	})
 	fmt.Println("hola")
 
 	db.DBConnection()
@@ -21,6 +32,31 @@ func main() {
 	r.HandleFunc("/", routes.HomeHandler)
 	r.HandleFunc("/platos/", routes.VistaPlato)
 	r.HandleFunc("/platos/{id}", routes.VistaPlato)
-	http.ListenAndServe(":3000", r)
 
+	handler := cors.Handler(r)
+	http.ListenAndServe(":3000", handler)
+
+}
+
+func prueba() {
+
+	mux := http.NewServeMux()
+
+	cors := cors.New(cors.Options{
+		AllowedOrigins: []string{"*"},
+		AllowedMethods: []string{
+			http.MethodPost,
+			http.MethodGet,
+		},
+		AllowedHeaders:   []string{"*"},
+		AllowCredentials: false,
+	})
+
+	mux.HandleFunc("/hello", func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Content-Type", "text/plain; charset=utf-8")
+		fmt.Fprintln(w, "Hello there!")
+	})
+
+	handler := cors.Handler(mux)
+	http.ListenAndServe(":4000", handler)
 }
