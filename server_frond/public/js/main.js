@@ -20,6 +20,7 @@ function listado(){
 
                 const contenido=document.getElementById("contenido")
                 
+                contenido.innerHTML="";
                 var contador =0;
                 data.Platos.forEach(p => {
                     
@@ -61,9 +62,13 @@ function abrir_creacion(url){
     });
 }
 
+function cerrar_creacion(){
+    $('#crear_plato').modal('hide');
+}
+
 function crear_p(){
 
-    alert("hola");
+/*     alert("hola");
     let nombre = document.getElementById("campoNombre")
     let descripcion = document.getElementById("exampleFormControlTextarea1")
     let precio = document.getElementById("precio")
@@ -76,11 +81,11 @@ function crear_p(){
     formData.append('precio',precio.value);
     formData.append('cantidad',cantidad.value);
     formData.append('descripcion',descripcion.value);
-    formData.append('imagen',imagen.value);
+    formData.append('imagen',imagen.value); */
   
   
-
-
+    const form = document.getElementById('form_crear_p');
+    const formData = new FormData(form);
     $.ajax({
         
         url: $('#form_crear_p').attr('action'),
@@ -93,6 +98,8 @@ function crear_p(){
             console.log(response);
            
             alert('Entidad registrado correctamente');
+            listado();
+            cerrar_creacion();
 
         },
         error:function(error){
@@ -105,19 +112,3 @@ function crear_p(){
 }
 
 
-function prueba(){
-    const form = document.getElementById("form_crear_p");
-
-    // Previene la recarga de la página
-    alert("auxilio");
-      const formData = new FormData(form);
-      const formDataObject = Object.fromEntries(formData.entries()); // Convierte FormData a un objeto JavaScript
-    
-      // Muestra los datos del formulario en la consola
-      console.log(formDataObject);
-    
-      // Muestra los datos del formulario en el HTML
-
-    
-
-}
