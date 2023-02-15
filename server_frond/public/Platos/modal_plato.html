@@ -1,0 +1,74 @@
+<div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Crear Plato</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form  id="form_crear_p" method="post"  enctype="multipart/form-data">
+            <div id="errores"></div>
+
+            <div class="mb-3">
+                <label for="campoNombre" class="form-label">Nombre del Plato</label>
+                <input type="text" class="form-control" id="campoNombre" placeholder="">
+
+                <label for="precio" class="form-label">Precio</label>
+                <input type="number" class="form-control" id="precio" placeholder="">
+
+                <label for="cantidad" class="form-label">Cantidad</label>
+                <input type="number" class="form-control" id="cantidad" placeholder="">
+
+                <label for="exampleFormControlTextarea1" class="form-label">Descripción</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+
+                <div class="mb-3">
+                    <label for="imagen" class="form-label">Imagen</label>
+                    <input class="form-control" type="file" id="imagen">
+                  </div>
+
+
+                
+              </div>
+           <!-- 
+
+                
+                Imagen      string  `json:"imagen"`
+                Stock       int     `json:"stock"`
+            -->
+            
+            <br>
+
+            <!-- <button type="submit" id="btnEnviar" class="button">Crear</button> -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="submit"  class="btn btn-primary">Crear</button>
+              </div>
+          </form>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById('form_crear_p');
+  
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+  
+      const formData = new FormData(form);
+  
+      $.ajax({
+        url: 'http://localhost:3000/platos/',
+        type: 'POST',
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function(response) {
+          // hacer algo con la respuesta del servidor
+        },
+        error: function(xhr, status, error) {
+          // manejar errores
+        }
+      });
+    });
+  </script>
