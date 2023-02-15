@@ -24,6 +24,10 @@ type Plato struct {
 	Imagen      string  `json:"imagen"`
 	Stock       int     `json:"stock"`
 }
+type JsonPlato struct {
+	Message string
+	Platos  []Plato
+}
 
 type PedidoPlato struct {
 	gorm.Model

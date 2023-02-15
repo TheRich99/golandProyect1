@@ -18,7 +18,14 @@ func VistaPlato(w http.ResponseWriter, r *http.Request) {
 	case "GET":
 		var platillos []models.Plato
 		db.DB.Find((&platillos))
-		json.NewEncoder(w).Encode(&platillos)
+
+		var platos models.JsonPlato
+
+		platos.Message = "Success"
+
+		platos.Platos = platillos
+		json.NewEncoder(w).Encode(&platos)
+
 	case "POST":
 		var platillo models.Plato
 		json.NewDecoder(r.Body).Decode(&platillo)
