@@ -26,12 +26,13 @@ func main() {
 
 	db.DBConnection()
 
-	db.DB.AutoMigrate(&models.Restaurante{}, models.Pedido{}, models.Plato{}, models.PedidoPlato{})
+	db.DB.AutoMigrate(&models.Restaurante{}, models.Pedido{}, models.Plato{}, models.PedidoPlato{}, models.Usuario{})
 
 	r := mux.NewRouter()
 	r.HandleFunc("/", routes.HomeHandler)
 	r.HandleFunc("/platos/", routes.VistaPlato)
 	r.HandleFunc("/platos/{id}", routes.VistaPlato)
+	r.HandleFunc("/usuarios/", routes.VistaUsuario)
 
 	handler := cors.Handler(r)
 	http.ListenAndServe(":3000", handler)

@@ -44,16 +44,24 @@
 </head>
 
 <body>
+  <section class="container">
+    <section class="row">
 
-  <section id="seccion">
-    <img id="fondo" class="img-thumbnail float-start" src="/public/Imagenes/Index/fondoIndex.jpg" alt="Mesa de cocina">
-    <section id="centrar">
-      <h1 id="slogan">De la cocina a tu mesa en un instante</h1>
-      <br> <a href="Menu.html"><button type="button" class="btn btn-success"><b>Hacer mi pedido</b></button></a>
+      <form class="row g-3 mt-3" action="" id="form">
+        <h1>Inicio de sesión</h1><br>
+        <br>
+        <p>Por favor ingresa los datos con los que te encuentras registrado</p>
+        <section class="col-12">
+          <input type="email" class="form-control" placeholder="Correo electrónico" required>
+        </section>
+        <section class="col-12">
+          <input type="password" class="form-control" placeholder="Contraseña" required>
+        </section>
+        <button type="submit" id="boton" class="btn btn-secondary">Ingresar</button>
+        <p>¿No tienes una cuenta? <a class="link" href="/public/registro.html">Registrate aquí</a></p>        
+      </form>
     </section>
-
   </section>
-
 </body>
 
 <!-- Footer-->

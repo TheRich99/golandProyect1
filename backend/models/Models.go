@@ -4,6 +4,13 @@ import (
 	"gorm.io/gorm"
 )
 
+type Usuario struct {
+	gorm.Model
+	Nombre   string `json:"nombre"`
+	Correo string `json:"correo"`
+	Contraseña   string `json:"contraseña"`
+}
+
 type Restaurante struct {
 	gorm.Model
 	Nombre   string `json:"nombre"`
@@ -27,6 +34,10 @@ type Plato struct {
 type JsonPlato struct {
 	Message string
 	Platos  []Plato
+}
+type JsonUsuarios struct {
+	Message string
+	Usuarios  []Usuario
 }
 
 type PedidoPlato struct {

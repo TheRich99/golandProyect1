@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Virtual Waiter</title>
   <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
+  <script src="/public/js/script.js"></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="/public/CSS/estilos.css" media="screen" />
@@ -44,16 +45,30 @@
 </head>
 
 <body>
+  <section class="container">
+    <section class="row">
 
-  <section id="seccion">
-    <img id="fondo" class="img-thumbnail float-start" src="/public/Imagenes/Index/fondoIndex.jpg" alt="Mesa de cocina">
-    <section id="centrar">
-      <h1 id="slogan">De la cocina a tu mesa en un instante</h1>
-      <br> <a href="Menu.html"><button type="button" class="btn btn-success"><b>Hacer mi pedido</b></button></a>
+      <form id="form" class="row g-3 mt-3" action="">
+        <h1>Registro</h1><br>
+        <br>
+        <p>Por favor ingresa los siguientes datos</p>
+        <section class="col-12">
+          <input type="number" class="form-control" placeholder="Número de cédula" id="cedula" required>
+        </section>
+        <section class="col-12">
+          <input type="text" class="form-control" placeholder="Nombre" id="nombre" required>
+        </section>
+        <section class="col-12">
+          <input type="email" class="form-control" placeholder="Correo electrónico" id="correo" required>
+        </section>
+        <section class="col-12">
+          <input type="password" class="form-control" placeholder="Contraseña" id="contrasena" required>
+        </section>
+        <button type="submit" id="boton" class="btn btn-secondary">Registrar</button>
+
+      </form>
     </section>
-
   </section>
-
 </body>
 
 <!-- Footer-->
