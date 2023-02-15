@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Información</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="CSS/estilos.css" media="screen">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
+
+    <!--Barra de navegacion-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="Index.html">
+                <img src="Imagenes/Logo.PNG" alt="Logo FoodTainer" height="50px">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="Menu.html"><b>Menú</b></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Pedido.html"><b>Pedido</b></a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <b>Mi cuenta</b>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-lg-right" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="Info.html">Editar mi información</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#" onclick="cerrarSesion()">Cerrar sesión</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+</head>
+
+<body>
+    <section class="container">
+        <div class="row">
+            <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+                <div class="card card-signin my-5">
+                    <div class="card-body text-center">
+                        <br>
+                        <img src="Imagenes/LogoV.PNG" aria-label="Placeholder: 400x400"
+                            preserveAspectRatio="xMidYMid slice" focusable="false" width="40%"
+                            style="border-radius: 10%;">
+                        <br><br><br>
+                        <h5 class="card-title text-center">Editar información</h5>
+                        <br>
+                        <!-- Formulario de edición del restaurante -->
+                        <form class="form-signin" id="infoRestaurante" onsubmit="return validarCaptcha()">
+                            <div class="form-label-group">
+                                <input type="text" id="inputNombreR" class="form-control"
+                                    placeholder="Nombre del restaurante" value="Restaurante la casa" required autofocus>
+                            </div>
+                            <hr>
+                            <div class="form-label-group">
+                                <input type="text" id="inputTeléfonoR" class="form-control" placeholder="Teléfono"
+                                    value="645-452256" required>
+                            </div>
+                            <hr>
+                            <button id="submitsignin" class="btn btn-lg btn-primary btn-block text-uppercase"
+                                type="submit">Actualizar información</button>
+                        </form>
+                        <!-- Formulario de edición del usuario  -->
+                        <form class="form-signin" id="infoUsuario" onsubmit="return validarCaptcha()">
+                            <div class="form-label-group">
+                                <input type="text" id="inputNombreU" class="form-control" placeholder="Nombre"
+                                    value="Brian" required autofocus>
+                            </div>
+                            <hr>
+                            <div class="form-label-group">
+                                <input type="text" id="inputCedulaU" class="form-control" placeholder="Nombre"
+                                    value="1120874550" required>
+                            </div>
+                            <hr>
+                            <div class="form-label-group">
+                                <input type="email" id="inputCorreoU" class="form-control"
+                                    placeholder="Correo electrónico" value="brian.arias@unillanos.edu.co" required>
+                            </div>
+                            <hr>
+                            <div class="input-group">
+                                <input type="password" class="form-control" id="password" name="password" placeholder="*************">
+                                <a href="" class="delete" data-toggle="modal" id="mostrarContra"><i class="material-icons" style="font-size: 39px;"
+                                    data-toggle="tooltip" title="Mostrar/ocultar contraseña">&#xe4f9;</i></a>
+                            </div>
+                            <hr>
+                            <button id="submitsignin" class="btn btn-lg btn-primary btn-block text-uppercase"
+                                type="submit">Actualizar información</button>
+                        </form>
+                        <hr class="my-4">
+                    </div>
+                </div>
+            </div>
+    </section>
+</body>
+<script src="js/metodos.js"></script>
+<!-- Footer-->
+<footer class="footer text-center" id="footer">
+    <div class="container"><br>
+        <br>
+        <div class="row">
+            <div class="col-lg-4 mb-5 mb-lg-0">
+                <h5 class="text-uppercase mb-4">Contáctanos</h5>
+                <p class="lead mb-0"> virtualwaiter_soporte@gmail.com </p>
+            </div>
+            <!-- Iconos Redes sociales-->
+            <div class="col-lg-4 mb-5 mb-lg-0">
+                <h5 class="text-uppercase mb-4">Nuestras redes</h5>
+                <a class="btn btn-outline-dark btn-social mx-1" href="#!"><i class="fab fa-fw fa-facebook-f"></i></a>
+                <a class="btn btn-outline-dark btn-social mx-1" href="#!"><i class="fab fa-fw fa-twitter"></i></a>
+                <a class="btn btn-outline-dark btn-social mx-1" href="#!"><i class="fab fa-fw fa-instagram"></i></a>
+            </div>
+            <!-- Informacion-->
+            <div class="col-lg-4">
+                <h5 class="text-uppercase mb-4">Linea de atención</h5>
+                <p class="lead mb-0"> 01 8000 17 3988 </p><br>
+                <br>
+            </div>
+        </div>
+    </div>
+</footer>
+<!--Copyright-->
+<div id="copy" class="copyright py-4 text-center text-white">
+    <div class="container"><small>Copyright © Virtual Waiter 2023</small></div>
+</div>
+
+</html>
