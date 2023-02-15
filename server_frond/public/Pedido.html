@@ -7,12 +7,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Virtual Waiter</title>
   <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="/public/CSS/estilos.css" media="screen" />
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+    crossorigin="anonymous"></script>
 
   <!--Barra de navegacion-->
-  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
       <a class="navbar-brand" href="/public/index.html">
         <img src="/public/Imagenes/Logo.PNG" alt="Logo FoodTainer" height="50px">
@@ -35,7 +44,20 @@
           <li class="nav-item">
             <a class="nav-link" href="/public/Pedido.html"><b>Pedido</b></a>
           </li>
-
+        </ul>
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              <b>Mi cuenta</b>
+            </a>
+            <div class="dropdown-menu dropdown-menu-lg-right" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="Info.html">Editar mi información</a>
+              <a class="dropdown-item" href="#">Mi Pedido(?</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#" onclick="cerrarSesion()">Cerrar sesión</a>
+            </div>
+          </li>
         </ul>
       </div>
     </div>
@@ -76,7 +98,8 @@
                       <div class="row justify-content-center">
                         <div class="col-auto">
                           <div class="form-outline mb-4">
-                            <input type="number" value="1" class="form-control text-center" id="cantidad" maxlength="10">
+                            <input type="number" value="1" class="form-control text-center" id="cantidad"
+                              maxlength="10">
                             <label class="form-label">Cantidad</label>
                           </div>
                         </div>
@@ -113,7 +136,8 @@
                       <div class="row justify-content-center">
                         <div class="col-auto">
                           <div class="form-outline mb-4">
-                            <input type="number" value="1" class="form-control text-center" id="cantidad" maxlength="10">
+                            <input type="number" value="1" class="form-control text-center" id="cantidad"
+                              maxlength="10">
                             <label class="form-label">Cantidad</label>
                           </div>
                         </div>
@@ -143,17 +167,17 @@
           <div class="full-box div-bordered">
             <h5 class="text-center text-uppercase bg-success" id="orden">Resumen de la orden
             </h5>
-            <ul class="list-group bag-details">
-              <a
-                class="list-group-item d-flex justify-content-between align-items-center  poppins-regular font-weight-bold">
+            <ul id="pedido" class="list-group bag-details bg-light">
+              <span
+                class="list-group-item d-flex justify-content-between align-items-center  poppins-regular font-weight-bold ">
                 Cantidad de platillos
                 <span>2</span>
-              </a>
-              <a
+              </span>
+              <span
                 class="list-group-item d-flex justify-content-between align-items-center  poppins-regular font-weight-bold">
                 Número de mesa
                 <span>2</span>
-              </a>
+              </span>
               <a
                 class="list-group-item d-flex justify-content-between align-items-center text-uppercase poppins-regular font-weight-bold">
                 TOTAL

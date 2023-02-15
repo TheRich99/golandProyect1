@@ -4,7 +4,9 @@ import (
 	"backend/db"
 	models "backend/models"
 	"encoding/json"
+	"fmt"
 	"net/http"
+	"strconv"
 
 	"github.com/gorilla/mux"
 )
@@ -27,8 +29,29 @@ func VistaPlato(w http.ResponseWriter, r *http.Request) {
 		json.NewEncoder(w).Encode(&platos)
 
 	case "POST":
+<<<<<<< HEAD
 		var usuarios models.Plato
 		json.NewDecoder(r.Body).Decode(&usuarios)
+=======
+
+		fmt.Println(r.FormValue("campoNombre"))
+		fmt.Println(r.FormValue("precio"))
+		fmt.Println(r.FormValue("cantidad"))
+		fmt.Println(r.FormValue("descrip"))
+
+		var platillo models.Plato
+
+		platillo.Nombre = r.FormValue("campoNombre")
+		platillo.Descripcion = r.FormValue("descrip")
+
+		if s, err := strconv.ParseFloat(r.FormValue("precio"), 32); err == nil {
+			platillo.Precio = float32(s)
+		}
+
+		platillo.Stock = 0
+
+		//json.NewDecoder(r.Body).Decode(&platillo)
+>>>>>>> dbca6be7db21586d50a8d0bda9e34937e38674e8
 
 		creado := db.DB.Create(&usuarios)
 
