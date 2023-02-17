@@ -35,8 +35,45 @@ func main() {
 		w.Write(file)
 	})
 
+<<<<<<< HEAD
+	r.HandleFunc("/Login/", func(w http.ResponseWriter, r *http.Request) {
+		file, err := ioutil.ReadFile("./public/login.html")
+		if err != nil {
+			panic(err)
+		}
+		w.Write(file)
+	})
+
+	r.HandleFunc("/Registro/", func(w http.ResponseWriter, r *http.Request) {
+		file, err := ioutil.ReadFile("./public/registro.html")
+		if err != nil {
+			panic(err)
+		}
+		w.Write(file)
+	})
+
+	r.HandleFunc("/Info/", func(w http.ResponseWriter, r *http.Request) {
+		file, err := ioutil.ReadFile("./public/Info.html")
+		if err != nil {
+			panic(err)
+		}
+		w.Write(file)
+	})
+
+	r.HandleFunc("/miMenu/", func(w http.ResponseWriter, r *http.Request) {
+		file, err := ioutil.ReadFile("./public/miMenu.html")
+		if err != nil {
+			panic(err)
+		}
+		w.Write(file)
+	})
+
+	r.HandleFunc("/totalPedidos/", func(w http.ResponseWriter, r *http.Request) {
+		file, err := ioutil.ReadFile("./public/totalPedidos.html")
+=======
 	r.HandleFunc("/GestionPlatos/", func(w http.ResponseWriter, r *http.Request) {
 		file, err := ioutil.ReadFile("./public/Admin/gestionPlatos.html")
+>>>>>>> a6609e2a42f116812791417ba7bae4e33b072f93
 		if err != nil {
 			panic(err)
 		}
