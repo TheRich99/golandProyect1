@@ -124,34 +124,25 @@ func VistaUsuario(w http.ResponseWriter, r *http.Request) {
 		user.Contraseña = r.FormValue("pass")
 
 		err := json.NewDecoder(r.Body).Decode(&user)
-        if err != nil {
-            w.WriteHeader(http.StatusBadRequest)
-            fmt.Fprintf(w, "Solicitud inválida: %v", err)
-            return
-        }
+		if err != nil {
+			w.WriteHeader(http.StatusBadRequest)
+			fmt.Fprintf(w, "Solicitud inválida: %v", err)
+			return
+		}
 		//if err := db.DB.Where("correo = ? AND contraseña = ?", user.Correo, user.Contraseña).First(&user).Error; err != nil {
-        if err := db.DB.Where("correo = ? AND contraseña = ?", r.FormValue("email"), r.FormValue("pass")).First(&user).Error; err != nil {
-            w.WriteHeader(http.StatusUnauthorized)
-            fmt.Fprint(w, "Credenciales incorrectas, intente nuevamente")
-            return
-        }
-        json.NewEncoder(w).Encode(&user)
-
+		if err := db.DB.Where("correo = ? AND contraseña = ?", r.FormValue("email"), r.FormValue("pass")).First(&user).Error; err != nil {
+			w.WriteHeader(http.StatusUnauthorized)
+			fmt.Fprint(w, "Credenciales incorrectas, intente nuevamente")
+			return
+		}
+		json.NewEncoder(w).Encode(&user)
 
 	case "POST":
-<<<<<<< HEAD
-		//fmt.Println(r.FormValue("cedula"))
-		//fmt.Println(r.FormValue("nombre"))
-		//fmt.Println(r.FormValue("correo"))
-		//fmt.Println(r.FormValue("contrasena"))
-		
-=======
 		fmt.Println(r.FormValue("cedula"))
 		fmt.Println(r.FormValue("nombre"))
 		fmt.Println(r.FormValue("correo"))
 		fmt.Println(r.FormValue("contrasena"))
 
->>>>>>> a6609e2a42f116812791417ba7bae4e33b072f93
 		var usuarios models.Usuario
 
 		usuarios.Nombre = r.FormValue("nombre")
@@ -167,8 +158,8 @@ func VistaUsuario(w http.ResponseWriter, r *http.Request) {
 		if creado.Error != nil {
 			w.WriteHeader(http.StatusBadRequest)
 			w.Write([]byte(creado.Error.Error()))
-		}else{
-			http.Redirect(w, r, "http://localhost:4000/Registro/", http.StatusSeeOther)
+		} else {
+			//http.Redirect(w, r, "http://localhost:4000/Registro/", http.StatusSeeOther)
 		}
 		json.NewEncoder(w).Encode(&usuarios)
 	}

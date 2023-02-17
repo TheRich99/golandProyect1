@@ -1,8 +1,12 @@
 //var $ = jQuery;
+
 var $ = jQuery.noConflict();
 $(document).ready(function(){
     
-    listado();
+    if ( $("#contenido").length > 0 ) {
+        listado();
+      }
+    
 });
 
 function listado(){
@@ -20,6 +24,7 @@ function listado(){
 
                 const contenido=document.getElementById("contenido")
                 
+ 
                 contenido.innerHTML="";
                 var contador =0;
                 data.Platos.forEach(p => {
@@ -68,7 +73,7 @@ function listado(){
 function crearUsuario(){   
     const form = document.getElementById('formRegistro');
     const formData = new FormData(form);
-    console.log(form);
+    //console.log(form);
     $.ajax({
         
         url: $('#formRegistro').attr('action'),
@@ -81,8 +86,8 @@ function crearUsuario(){
             console.log(response);
            
             alert('Usuario registrado correctamente,puede iniciar sesion con las credenciales creadas');
-            // redirigir al usuario a la página deseada
-            //window.location.href = 'http://localhost:4000/Login/';
+            
+            window.location.href = 'http://localhost:4000/Login/';
 
         },
         error:function(error){
