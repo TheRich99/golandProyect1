@@ -35,6 +35,54 @@ func main() {
 		w.Write(file)
 	})
 
+	r.HandleFunc("/Login/", func(w http.ResponseWriter, r *http.Request) {
+		file, err := ioutil.ReadFile("./public/login.html")
+		if err != nil {
+			panic(err)
+		}
+		w.Write(file)
+	})
+
+	r.HandleFunc("/Registro/", func(w http.ResponseWriter, r *http.Request) {
+		file, err := ioutil.ReadFile("./public/registro.html")
+		if err != nil {
+			panic(err)
+		}
+		w.Write(file)
+	})
+
+	r.HandleFunc("/Info/", func(w http.ResponseWriter, r *http.Request) {
+		file, err := ioutil.ReadFile("./public/Info.html")
+		if err != nil {
+			panic(err)
+		}
+		w.Write(file)
+	})
+
+	r.HandleFunc("/miMenu/", func(w http.ResponseWriter, r *http.Request) {
+		file, err := ioutil.ReadFile("./public/miMenu.html")
+		if err != nil {
+			panic(err)
+		}
+		w.Write(file)
+	})
+
+	r.HandleFunc("/totalPedidos/", func(w http.ResponseWriter, r *http.Request) {
+		file, err := ioutil.ReadFile("./public/totalPedidos.html")
+		if err != nil {
+			panic(err)
+		}
+		w.Write(file)
+	})
+
+	r.HandleFunc("/GestionPlatos/", func(w http.ResponseWriter, r *http.Request) {
+		file, err := ioutil.ReadFile("./public/Admin/gestionPlatos.html")
+		if err != nil {
+			panic(err)
+		}
+		w.Write(file)
+	})
+
 	fmt.Println("corriendo")
 	http.ListenAndServe(":4000", r)
 }

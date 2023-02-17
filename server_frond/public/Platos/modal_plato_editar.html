@@ -1,0 +1,53 @@
+<div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Editar Plato</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="http://localhost:3000/platos/" id="form_editar_p" method="PUT"  enctype="multipart/form-data">
+            <div id="errores"></div>
+
+            <div class="mb-3" id="conteniddo_formulador">
+              <!-- prueba -->
+              <label for="ID2" class="form-label">Nombre del Plato</label>
+              <input type="text" class="form-control" id="ID2"  name="ID2" placeholder="">
+                <label for="campoNombre2" class="form-label">Nombre del Plato</label>
+                <input type="text" class="form-control" id="campoNombre2"  name="campoNombre2" placeholder="">
+
+                <label for="precio2" class="form-label">Precio</label>
+                <input type="number" class="form-control" id="precio2" name="precio2" placeholder="">
+
+                <label for="cantidad2" class="form-label">Cantidad</label>
+                <input type="number" class="form-control" id="cantidad2" name="cantidad2" placeholder="">
+
+                <label for="descrip2" class="form-label">Descripción</label>
+                <textarea class="form-control" id="descrip2" name="descrip2" rows="3"></textarea>
+
+                <div class="mb-3">
+                    <label for="imagen" class="form-label">Imagen</label>
+                    <input class="form-control" type="file" id="imagen">
+                  </div>
+
+
+                
+              </div>
+           <!-- 
+
+                
+                Imagen      string  `json:"imagen"`
+                Stock       int     `json:"stock"`
+            -->
+            
+            <br>
+
+            <!-- <button type="submit" id="btnEnviar" class="button">Crear</button> -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" onclick="editar_p();" class="btn btn-primary">Crear</button>
+              </div>
+          </form>
+      </div>
+
+    </div>
+  </div>

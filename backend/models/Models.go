@@ -6,9 +6,9 @@ import (
 
 type Usuario struct {
 	gorm.Model
-	Nombre   string `json:"nombre"`
-	Correo string `json:"correo"`
-	Contraseña   string `json:"contraseña"`
+	Nombre     string `json:"nombre"`
+	Correo     string `json:"correo"`
+	Contraseña string `json:"contraseña"`
 }
 
 type Restaurante struct {
@@ -23,6 +23,7 @@ type Pedido struct {
 	Total  float32 `json:"total"`
 	NoMesa string  `json:"noMesa"`
 }
+
 type Plato struct {
 	gorm.Model
 	Nombre      string  `json:"nombre"`
@@ -36,12 +37,13 @@ type JsonPlato struct {
 	Platos  []Plato
 }
 type JsonUsuarios struct {
-	Message string
-	Usuarios  []Usuario
+	Message  string
+	Usuarios []Usuario
 }
 
 type PedidoPlato struct {
 	gorm.Model
+	Cantidad int    `json:"cantidad"`
 	PedidoId int    `json:"pedido_id"`
 	PlatoId  int    `json:"plato_id"`
 	Pedido   Pedido `gorm:"foreignKey:PedidoId; constraint:OnUpdate:CASCADE,OnDelete:SET NULL; not null"`
