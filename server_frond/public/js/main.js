@@ -86,6 +86,7 @@ function crear_p(){
   
     const form = document.getElementById('form_crear_p');
     const formData = new FormData(form);
+    console.log(form);
     $.ajax({
         
         url: $('#form_crear_p').attr('action'),

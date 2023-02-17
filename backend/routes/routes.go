@@ -29,14 +29,11 @@ func VistaPlato(w http.ResponseWriter, r *http.Request) {
 		json.NewEncoder(w).Encode(&platos)
 
 	case "POST":
-		var usuarios models.Plato
-		json.NewDecoder(r.Body).Decode(&usuarios)
-
 		fmt.Println(r.FormValue("campoNombre"))
 		fmt.Println(r.FormValue("precio"))
 		fmt.Println(r.FormValue("cantidad"))
 		fmt.Println(r.FormValue("descrip"))
-
+		fmt.Println("hola")
 		var platillo models.Plato
 
 		platillo.Nombre = r.FormValue("campoNombre")
@@ -50,13 +47,13 @@ func VistaPlato(w http.ResponseWriter, r *http.Request) {
 
 		//json.NewDecoder(r.Body).Decode(&platillo)
 
-		creado := db.DB.Create(&usuarios)
+		creado := db.DB.Create(&platillo)
 
 		if creado.Error != nil {
 			w.WriteHeader(http.StatusBadRequest)
 			w.Write([]byte(creado.Error.Error()))
 		}
-		json.NewEncoder(w).Encode(&usuarios)
+		json.NewEncoder(w).Encode(&platillo)
 
 	case "DELETE":
 		var plato models.Plato
