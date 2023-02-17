@@ -29,10 +29,8 @@ func VistaPlato(w http.ResponseWriter, r *http.Request) {
 		json.NewEncoder(w).Encode(&platos)
 
 	case "POST":
-<<<<<<< HEAD
 		var usuarios models.Plato
 		json.NewDecoder(r.Body).Decode(&usuarios)
-=======
 
 		fmt.Println(r.FormValue("campoNombre"))
 		fmt.Println(r.FormValue("precio"))
@@ -51,7 +49,6 @@ func VistaPlato(w http.ResponseWriter, r *http.Request) {
 		platillo.Stock = 0
 
 		//json.NewDecoder(r.Body).Decode(&platillo)
->>>>>>> dbca6be7db21586d50a8d0bda9e34937e38674e8
 
 		creado := db.DB.Create(&usuarios)
 
