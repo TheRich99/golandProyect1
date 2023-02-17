@@ -88,6 +88,24 @@ func VistaPlato(w http.ResponseWriter, r *http.Request) {
 
 }
 
+func EliminarPlato(w http.ResponseWriter, r *http.Request) {
+
+	var plato models.Plato
+	parametros := mux.Vars(r)
+	db.DB.First(&plato, parametros["id"])
+
+	if plato.ID == 0 {
+		w.WriteHeader(http.StatusNotFound)
+		w.Write([]byte("Plato no encontrado"))
+		return
+	}
+	db.DB.Delete(&plato)
+
+	w.WriteHeader(http.StatusOK)
+	w.Write([]byte("Eliminado Correctamente"))
+
+}
+
 func VistaUsuario(w http.ResponseWriter, r *http.Request) {
 	switch r.Method {
 	case "GET":
@@ -106,7 +124,7 @@ func VistaUsuario(w http.ResponseWriter, r *http.Request) {
 		fmt.Println(r.FormValue("nombre"))
 		fmt.Println(r.FormValue("correo"))
 		fmt.Println(r.FormValue("contrasena"))
-		
+
 		var usuarios models.Usuario
 
 		usuarios.Nombre = r.FormValue("nombre")
@@ -116,9 +134,9 @@ func VistaUsuario(w http.ResponseWriter, r *http.Request) {
 		if s, err := strconv.ParseUint(r.FormValue("cedula"), 10, 32); err == nil {
 			usuarios.ID = uint(s)
 		}
-		
+
 		creado := db.DB.Create(&usuarios)
-		
+
 		if creado.Error != nil {
 			w.WriteHeader(http.StatusBadRequest)
 			w.Write([]byte(creado.Error.Error()))

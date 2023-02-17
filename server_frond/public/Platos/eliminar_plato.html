@@ -1,0 +1,20 @@
+<div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Eliminar Plato</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="http://localhost:3000/platos/" id="form_crear_p" method="delete"  enctype="multipart/form-data">
+            <div id="errores"></div>
+            <h2>¿Seguro que desea realizar este operacion?</h2>
+      
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" onclick="eliminar_p();" class="btn btn-primary">Aceptar</button>
+              </div>
+          </form>
+      </div>
+
+    </div>
+  </div>

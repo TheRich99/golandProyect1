@@ -24,7 +24,7 @@
   <link rel="stylesheet" type="text/css" href="/public/CSS/estilos.css" media="screen" />
   <script src=" /public/js/js/bootstrap.bundle.min.js"></script>
   <script src="/public/js/jquery-3.6.1.min.js"></script>
-  <script src="/public/js/main.js"></script>
+  <script src="/public/js/platosAdmin.js"></script>
   <!--Barra de navegacion-->
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
@@ -44,7 +44,7 @@
             <a class="nav-link" href="/public/registro.html"><b>Registro</b></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/Menu/"><b>Menú</b></a>
+            <a class="nav-link" href="/public/Menu.html"><b>Menú</b></a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/public/Pedido.html"><b>Pedido</b></a>
@@ -79,21 +79,41 @@
     <br>
     <p id="info">Somos un restaurante llanero caracterizado por su calidad, ambiente familiar y en especial deliciosos
       platillos.</p><br>
-    <h2>Men&uacute;</h2>
+    <h2>Platos</h2>
   </section>
+  <div class="container">
+        
+    <button onclick="abrir_creacion('/public/Platos/modal_plato.html')" class="btn btn-info ">Crear Plato</button>
+</div>
   <section class="container" >
     <br>
-    <section class="row row-cols-3" id="contenido">
+    <section class="row " id="contenido">
+
+        <div class="col-12 ">
+            <table class="table table-striped " id="datos">
+            <tbody id="tabla_platos">
+                <tr>
+                    
+
+                    <th>id</th>
+                    <th>Nombre</th> 
+                    <th>Precio</th>
+                    <th>Descripción</th>
+                    <th>Opciones</th>
+
+
+                </tr>
+            
+            </tbody>
+            </table>
+        </div>
 
 
     </section>
     
     <br>
   </section>
-  <div class="container">
-        
-    <button onclick="abrir_creacion('/public/Platos/modal_plato.html')" class="btn btn-info ">Crear Plato</button>
-</div>
+
 
   <!-- Contenedor Menú-->
   <div class="modal fade" id="crear_plato" role="dialog"></div>

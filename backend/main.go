@@ -18,6 +18,7 @@ func main() {
 		AllowedMethods: []string{
 			http.MethodPost,
 			http.MethodGet,
+			http.MethodDelete,
 		},
 		AllowedHeaders:   []string{"*"},
 		AllowCredentials: false,
@@ -46,8 +47,15 @@ func prueba() {
 	cors := cors.New(cors.Options{
 		AllowedOrigins: []string{"*"},
 		AllowedMethods: []string{
-			http.MethodPost,
+			http.MethodOptions,
 			http.MethodGet,
+			http.MethodHead,
+			http.MethodPost,
+			http.MethodPut,
+			http.MethodPatch,
+			http.MethodDelete,
+			http.MethodTrace,
+			http.MethodConnect,
 		},
 		AllowedHeaders:   []string{"*"},
 		AllowCredentials: false,

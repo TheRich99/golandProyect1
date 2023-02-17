@@ -35,6 +35,14 @@ func main() {
 		w.Write(file)
 	})
 
+	r.HandleFunc("/GestionPlatos/", func(w http.ResponseWriter, r *http.Request) {
+		file, err := ioutil.ReadFile("./public/Admin/gestionPlatos.html")
+		if err != nil {
+			panic(err)
+		}
+		w.Write(file)
+	})
+
 	fmt.Println("corriendo")
 	http.ListenAndServe(":4000", r)
 }
