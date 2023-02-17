@@ -1,4 +1,5 @@
 //var $ = jQuery;
+
 var $ = jQuery.noConflict();
 var inventarioPedido;
 
@@ -90,13 +91,15 @@ function crearPedido() {
     }
 }
 
-$(document).ready(function () {
 
-    listado();
+$(document).ready(function(){
+    
+    if ( $("#contenido").length > 0 ) {
+        listado();
+      }
+    
 });
-function contador() {
 
-}
 
 function listado() {
     $.ajax({
@@ -162,7 +165,7 @@ function listado() {
 function crearUsuario(){   
     const form = document.getElementById('formRegistro');
     const formData = new FormData(form);
-    console.log(form);
+    //console.log(form);
     $.ajax({
         
         url: $('#formRegistro').attr('action'),
@@ -175,8 +178,8 @@ function crearUsuario(){
             console.log(response);
            
             alert('Usuario registrado correctamente,puede iniciar sesion con las credenciales creadas');
-            // redirigir al usuario a la página deseada
-            //window.location.href = 'http://localhost:4000/Login/';
+            
+            window.location.href = 'http://localhost:4000/Login/';
 
         },
         error: function (error) {

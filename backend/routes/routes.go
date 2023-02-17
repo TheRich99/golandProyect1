@@ -159,7 +159,7 @@ func VistaUsuario(w http.ResponseWriter, r *http.Request) {
 			w.WriteHeader(http.StatusBadRequest)
 			w.Write([]byte(creado.Error.Error()))
 		} else {
-			http.Redirect(w, r, "http://localhost:4000/Registro/", http.StatusSeeOther)
+			//http.Redirect(w, r, "http://localhost:4000/Registro/", http.StatusSeeOther)
 		}
 		json.NewEncoder(w).Encode(&usuarios)
 	}

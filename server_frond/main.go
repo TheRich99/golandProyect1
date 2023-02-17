@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"html/template"
 	"io/ioutil"
 	"net/http"
 
@@ -9,6 +10,7 @@ import (
 )
 
 func main() {
+	const DIRE = "localhost"
 	r := mux.NewRouter()
 	r.PathPrefix("/public/").Handler(http.StripPrefix("/public/", http.FileServer(http.Dir("./public"))))
 	r.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
@@ -81,6 +83,29 @@ func main() {
 			panic(err)
 		}
 		w.Write(file)
+
+	})
+
+	r.HandleFunc("/GestionPlatos/", func(w http.ResponseWriter, r *http.Request) {
+		/* 		file, err := ioutil.ReadFile("./public/Admin/gestionPlatos.html")
+		   		if err != nil {
+		   			panic(err)
+		   		}
+		   		w.Write(file) */
+
+		data := DIRE
+
+		tmpl, err := template.ParseFiles("./public/Admin/gestionPlatos.html")
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+			return
+		}
+
+		err = tmpl.Execute(w, data)
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+		}
+
 	})
 
 	fmt.Println("corriendo")

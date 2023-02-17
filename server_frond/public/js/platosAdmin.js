@@ -161,7 +161,7 @@ function listado(){
                     <td>${p.ID}</td>
                     <td>${p.nombre}</td> 
                     <td>$${p.precio}</td>
-                    <td>$${p.descripcion}</td>
+                    <td>${p.descripcion}</td>
                     
                     <td>
                         <button onclick="abrir_edicion('/public/Platos/modal_plato_editar.html',${p.ID},'${p.nombre}',${p.precio},'${p.descripcion}')"  class="btn btn-info btn-sm">Editar</button>
