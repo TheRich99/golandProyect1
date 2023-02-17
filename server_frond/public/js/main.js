@@ -112,4 +112,36 @@ function crear_p(){
 
 }
 
+//******************************************************************* 
+//REGISTRO
+function crearUsuario(){   
+        const form = document.getElementById('formRegistro');
+        const formData = new FormData(form);
+        console.log(form);
+        $.ajax({
+            
+            url: $('#formRegistro').attr('action'),
+            type: $('#formRegistro').attr('method'),
+            data: formData,
+            cache:false,
+            processData:false,
+            contentType:false,
+            success: function(response){
+                console.log(response);
+               
+                alert('Usuario registrado correctamente');
+                // redirigir al usuario a la página deseada
+                window.location.href = 'http://localhost:4000/public/registro.html';
+    
+            },
+            error:function(error){
+                console.log(error);
+                
+            }
+    
+        });
+    
+    }
+    
+    
 

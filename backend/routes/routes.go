@@ -102,11 +102,23 @@ func VistaUsuario(w http.ResponseWriter, r *http.Request) {
 		json.NewEncoder(w).Encode(&users)
 
 	case "POST":
+		fmt.Println(r.FormValue("cedula"))
+		fmt.Println(r.FormValue("nombre"))
+		fmt.Println(r.FormValue("correo"))
+		fmt.Println(r.FormValue("contrasena"))
+		
 		var usuarios models.Usuario
-		json.NewDecoder(r.Body).Decode(&usuarios)
 
+		usuarios.Nombre = r.FormValue("nombre")
+		usuarios.Contraseña = r.FormValue("contrasena")
+		usuarios.Correo = r.FormValue("correo")
+
+		if s, err := strconv.ParseUint(r.FormValue("cedula"), 10, 32); err == nil {
+			usuarios.ID = uint(s)
+		}
+		
 		creado := db.DB.Create(&usuarios)
-
+		
 		if creado.Error != nil {
 			w.WriteHeader(http.StatusBadRequest)
 			w.Write([]byte(creado.Error.Error()))
