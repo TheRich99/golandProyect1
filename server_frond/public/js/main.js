@@ -103,7 +103,7 @@ $(document).ready(function(){
 
 function listado() {
     $.ajax({
-        url: "http://localhost:3000/platos/",
+        url: "http://192.168.1.8:3000/platos/",
         type: "get",
         dataType: "json",
         success: function (response) {
