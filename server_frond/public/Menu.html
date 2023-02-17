@@ -24,7 +24,8 @@
   <link rel="stylesheet" type="text/css" href="/public/CSS/estilos.css" media="screen" />
   <script src=" /public/js/js/bootstrap.bundle.min.js"></script>
   <script src="/public/js/jquery-3.6.1.min.js"></script>
-  <script src="/public/js/main.js"></script>
+
+
   <!--Barra de navegacion-->
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
@@ -81,23 +82,27 @@
       platillos.</p><br>
     <h2>Men&uacute;</h2>
   </section>
-  <section class="container" >
+
+  <section class="container ">
     <br>
-    <section class="row row-cols-3" id="contenido">
+    <section class="row row-cols-3 " id="contenido">
 
 
     </section>
-    
+
     <br>
   </section>
-  <div class="container">
-        
-    <button onclick="abrir_creacion('/public/Platos/modal_plato.html')" class="btn btn-info ">Crear Plato</button>
-</div>
+  <div class="container text-center">
+    <button onclick="crearPedido()" class="btn btn-success ">Completar pedido</button>
+    <hr>
+  </div>
 
   <!-- Contenedor Menú-->
   <div class="modal fade" id="crear_plato" role="dialog"></div>
+  <script src="/public/js/main.js"></script>
+  <script src="/public/js/creacionPedido.js"></script>
 </body>
+
 
 <!-- Footer-->
 <footer class="footer text-center" id="footer">

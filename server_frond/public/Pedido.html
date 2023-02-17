@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Virtual Waiter</title>
+  <title>Pedido</title>
   <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
     integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
@@ -19,6 +19,11 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
     integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
     crossorigin="anonymous"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="/public/CSS/estilos.css" media="screen" />
+  <script src=" /public/js/js/bootstrap.bundle.min.js"></script>
+  <script src="/public/js/jquery-3.6.1.min.js"></script>
 
   <!--Barra de navegacion-->
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -68,100 +73,36 @@
 <body>
   <!--Seccion de pedido-->
   <section class="container-cart ">
-    <div class="container"><br>
-      <h1>Restaurante La Casa</h1><br>
-      <h2>Pedido</h2>
-      <form class="row g-3" action="">
+    <div class="container">
+      <hr>
+      <br>
+      <div class="row">
+        <div class="col-6">
+          <button class="btn btn-success d-flex" onclick="history.back()">
+            Volver
+          </button>
+        </div>
+        <div class="d-flex col-6">
+          <h2 class="text-center">Pedido</h2>
+        </div>
+      </div>
+      <br>
+      <div class="">
         <section class="col-4">
-          <p id="info">Por favor seleccione su número de mesa</p>
+          <p id="info">Por favor selecciona tu número de mesa</p>
         </section>
         <section class="col-3">
-          <select class="form-select" aria-label="Default select example">
+          <select class="form-select form-select-lg mb-3" id="selectMesa" name="selectMesa" aria-label=".form-select-lg example">
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
           </select>
         </section>
-      </form>
+      </div>
       <hr>
-
       <div class="row">
-        <div class="col-12 col-md-7 col-lg-8">
-          <div class="container-fluid">
-
-            <h5 class="poppins-regular font-weight-bold full-box text-center">Bandeja paisa</h5><br>
-            <div class="bag-item full-box">
-              <div class="full-box">
-                <div class="container-fluid">
-                  <div class="row">
-                    <div class="col-12 col-lg-6 text-center mb-4">
-                      <div class="row justify-content-center">
-                        <div class="col-auto">
-                          <div class="form-outline mb-4">
-                            <input type="number" value="1" class="form-control text-center" id="cantidad"
-                              maxlength="10">
-                            <label class="form-label">Cantidad</label>
-                          </div>
-                        </div>
-                        <div class="col-auto">
-                          <button type="button" class="btn btn-success" data-mdb-toggle="tooltip"
-                            data-mdb-placement="bottom" title="Actualizar cantidad"><i class="fa fa-plus"></i></button>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-12 col-lg-4 text-center mb-4">
-                      <span class="poppins-regular font-weight-bold">SUBTOTAL: $18.000</span>
-                    </div>
-                    <div class="col-12 col-lg-2 text-center text-lg-end mb-4">
-                      <button type="button" class="btn btn-danger" data-mdb-toggle="tooltip" data-mdb-placement="bottom"
-                        title="Quitar del carrito">
-                        <span aria-hidden="true"><i class="far fa-trash-alt"></i></span>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-
-            <hr>
-
-
-            <h5 class="poppins-regular font-weight-bold full-box text-center">Pechuga a la plancha</h5><br>
-            <div class="bag-item full-box">
-              <div class="full-box">
-                <div class="container-fluid">
-                  <div class="row">
-                    <div class="col-12 col-lg-6 text-center mb-4">
-                      <div class="row justify-content-center">
-                        <div class="col-auto">
-                          <div class="form-outline mb-4">
-                            <input type="number" value="1" class="form-control text-center" id="cantidad"
-                              maxlength="10">
-                            <label class="form-label">Cantidad</label>
-                          </div>
-                        </div>
-                        <div class="col-auto">
-                          <button type="button" class="btn btn-success" data-mdb-toggle="tooltip"
-                            data-mdb-placement="bottom" title="Actualizar cantidad"><i class="fa fa-plus"></i></button>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-12 col-lg-4 text-center mb-4">
-                      <span class="poppins-regular font-weight-bold">SUBTOTAL: $15.000</span>
-                    </div>
-                    <div class="col-12 col-lg-2 text-center text-lg-end mb-4">
-                      <button type="button" class="btn btn-danger" data-mdb-toggle="tooltip" data-mdb-placement="bottom"
-                        title="Quitar del carrito">
-                        <span aria-hidden="true"><i class="far fa-trash-alt"></i></span>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-          </div>
+        <div class="col-12 col-md-7 col-lg-8" id="listaProductos">
+          
         </div>
         <div class="col-12 col-md-5 col-lg-4">
           <div class="full-box div-bordered">
@@ -171,19 +112,14 @@
               <span
                 class="list-group-item d-flex justify-content-between align-items-center  poppins-regular font-weight-bold ">
                 Cantidad de platillos
-                <span>2</span>
-              </span>
-              <span
-                class="list-group-item d-flex justify-content-between align-items-center  poppins-regular font-weight-bold">
-                Número de mesa
-                <span>2</span>
+                <span id="cantidadP"></span>
               </span>
               <a
                 class="list-group-item d-flex justify-content-between align-items-center text-uppercase poppins-regular font-weight-bold">
                 TOTAL
-                <span>$33.000</span>
+                <span id="total"></span>
               </a><br>
-              <button type="button" class="btn btn-success">Confirmar orden</button>
+              <button type="button" class="btn btn-success" onclick="confirmarOrden()">Confirmar orden</button>
             </ul><br>
           </div>
         </div>
@@ -193,7 +129,7 @@
     </div>
   </section>
 
-
+  <script src="/public/js/metodos.js"></script>
 </body>
 
 <!-- Footer-->
