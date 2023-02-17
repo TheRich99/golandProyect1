@@ -72,14 +72,15 @@ func VistaPlato(w http.ResponseWriter, r *http.Request) {
 		/* fmt.Println(r.FormValue("ID2")) */
 		var nuevo models.Plato
 		var anterior models.Plato
-		json.NewDecoder(r.Body).Decode(&nuevo)
+		//json.NewDecoder(r.Body).Decode(&nuevo)
 		db.DB.First(&anterior, r.FormValue("ID2"))
+		//fmt.Println("id:" + r.FormValue("ID2"))
 		if anterior.ID == 0 {
 			w.WriteHeader(http.StatusNotFound)
 			w.Write([]byte("Plato no encontrado"))
 			return
 		} else {
-
+			//fmt.Println("nombre nuevo: " + r.FormValue("campoNombre2") + "  nombre anterior:" + anterior.Nombre)
 			nuevo.ID = anterior.ID
 			nuevo.Nombre = r.FormValue("campoNombre2")
 			nuevo.Descripcion = r.FormValue("descrip2")

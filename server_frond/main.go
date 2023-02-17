@@ -9,8 +9,24 @@ import (
 	"github.com/gorilla/mux"
 )
 
+const DIREC = "localhost"
+
+type Direccion struct {
+	Name string
+}
+
+func Show(w http.ResponseWriter, r *http.Request) {
+
+	user := Direccion{Name: DIREC} //creamos un nuevo usuario
+
+	t, _ := template.ParseFiles("./public/Admin/gestionPlatos.html") //indicamos a ruta del template
+
+	t.Execute(w, user) //le pasamos al usuario al template para que este disponible
+
+}
+
 func main() {
-	const DIRE = "localhost"
+	direct := Direccion{Name: "localhost"}
 	r := mux.NewRouter()
 	r.PathPrefix("/public/").Handler(http.StripPrefix("/public/", http.FileServer(http.Dir("./public"))))
 	r.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
@@ -93,20 +109,19 @@ func main() {
 		   		}
 		   		w.Write(file) */
 
-		data := DIRE
-
 		tmpl, err := template.ParseFiles("./public/Admin/gestionPlatos.html")
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return
 		}
 
-		err = tmpl.Execute(w, data)
+		err = tmpl.Execute(w, direct)
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 		}
 
 	})
+	r.HandleFunc("/GestionPlatos2/", Show)
 
 	fmt.Println("corriendo")
 	http.ListenAndServe(":4000", r)
