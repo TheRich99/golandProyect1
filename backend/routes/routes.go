@@ -29,11 +29,10 @@ func VistaPlato(w http.ResponseWriter, r *http.Request) {
 		json.NewEncoder(w).Encode(&platos)
 
 	case "POST":
-		fmt.Println(r.FormValue("campoNombre"))
-		fmt.Println(r.FormValue("precio"))
-		fmt.Println(r.FormValue("cantidad"))
-		fmt.Println(r.FormValue("descrip"))
-		fmt.Println("hola")
+		/* 		fmt.Println(r.FormValue("campoNombre"))
+		   		fmt.Println(r.FormValue("precio"))
+		   		fmt.Println(r.FormValue("cantidad"))
+		   		fmt.Println(r.FormValue("descrip")) */
 		var platillo models.Plato
 
 		platillo.Nombre = r.FormValue("campoNombre")
@@ -70,21 +69,50 @@ func VistaPlato(w http.ResponseWriter, r *http.Request) {
 		w.Write([]byte("Eliminado Correctamente"))
 
 	case "PUT":
+		/* fmt.Println(r.FormValue("ID2")) */
 		var nuevo models.Plato
 		var anterior models.Plato
 		json.NewDecoder(r.Body).Decode(&nuevo)
-		db.DB.First(&anterior, nuevo.ID)
+		db.DB.First(&anterior, r.FormValue("ID2"))
 		if anterior.ID == 0 {
 			w.WriteHeader(http.StatusNotFound)
 			w.Write([]byte("Plato no encontrado"))
 			return
 		} else {
+
+			nuevo.ID = anterior.ID
+			nuevo.Nombre = r.FormValue("campoNombre2")
+			nuevo.Descripcion = r.FormValue("descrip2")
+
+			if s, err := strconv.ParseFloat(r.FormValue("precio2"), 32); err == nil {
+				nuevo.Precio = float32(s)
+			}
+
+			nuevo.Stock = 0
 			db.DB.Model(&anterior).Updates(&nuevo)
 			w.Write([]byte("Plato  editado"))
 		}
 
 		//w.Write([]byte(usuarios.Nombre))
 	}
+
+}
+
+func EliminarPlato(w http.ResponseWriter, r *http.Request) {
+
+	var plato models.Plato
+	parametros := mux.Vars(r)
+	db.DB.First(&plato, parametros["id"])
+
+	if plato.ID == 0 {
+		w.WriteHeader(http.StatusNotFound)
+		w.Write([]byte("Plato no encontrado"))
+		return
+	}
+	db.DB.Delete(&plato)
+
+	w.WriteHeader(http.StatusOK)
+	w.Write([]byte("Eliminado Correctamente"))
 
 }
 
@@ -111,11 +139,19 @@ func VistaUsuario(w http.ResponseWriter, r *http.Request) {
 
 
 	case "POST":
+<<<<<<< HEAD
 		//fmt.Println(r.FormValue("cedula"))
 		//fmt.Println(r.FormValue("nombre"))
 		//fmt.Println(r.FormValue("correo"))
 		//fmt.Println(r.FormValue("contrasena"))
 		
+=======
+		fmt.Println(r.FormValue("cedula"))
+		fmt.Println(r.FormValue("nombre"))
+		fmt.Println(r.FormValue("correo"))
+		fmt.Println(r.FormValue("contrasena"))
+
+>>>>>>> a6609e2a42f116812791417ba7bae4e33b072f93
 		var usuarios models.Usuario
 
 		usuarios.Nombre = r.FormValue("nombre")
@@ -125,9 +161,9 @@ func VistaUsuario(w http.ResponseWriter, r *http.Request) {
 		if s, err := strconv.ParseUint(r.FormValue("cedula"), 10, 32); err == nil {
 			usuarios.ID = uint(s)
 		}
-		
+
 		creado := db.DB.Create(&usuarios)
-		
+
 		if creado.Error != nil {
 			w.WriteHeader(http.StatusBadRequest)
 			w.Write([]byte(creado.Error.Error()))

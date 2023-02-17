@@ -35,6 +35,7 @@ func main() {
 		w.Write(file)
 	})
 
+<<<<<<< HEAD
 	r.HandleFunc("/Login/", func(w http.ResponseWriter, r *http.Request) {
 		file, err := ioutil.ReadFile("./public/login.html")
 		if err != nil {
@@ -69,6 +70,10 @@ func main() {
 
 	r.HandleFunc("/totalPedidos/", func(w http.ResponseWriter, r *http.Request) {
 		file, err := ioutil.ReadFile("./public/totalPedidos.html")
+=======
+	r.HandleFunc("/GestionPlatos/", func(w http.ResponseWriter, r *http.Request) {
+		file, err := ioutil.ReadFile("./public/Admin/gestionPlatos.html")
+>>>>>>> a6609e2a42f116812791417ba7bae4e33b072f93
 		if err != nil {
 			panic(err)
 		}

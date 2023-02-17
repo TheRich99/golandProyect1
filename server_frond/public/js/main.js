@@ -56,61 +56,12 @@ function listado(){
     });
 } 
 
-function abrir_creacion(url){
-    $('#crear_plato').load(url,function(){
-        $(this).modal('show');
-    });
-}
 
-function cerrar_creacion(){
-    $('#crear_plato').modal('hide');
-}
 
-function crear_p(){
 
-/*     alert("hola");
-    let nombre = document.getElementById("campoNombre")
-    let descripcion = document.getElementById("exampleFormControlTextarea1")
-    let precio = document.getElementById("precio")
-    let cantidad = document.getElementById("cantidad")
-    let imagen = document.getElementById("imagen")
 
-    var formData = new FormData();
-    console.log(nombre.value);
-    formData.append('nombre',nombre.value);
-    formData.append('precio',precio.value);
-    formData.append('cantidad',cantidad.value);
-    formData.append('descripcion',descripcion.value);
-    formData.append('imagen',imagen.value); */
-  
-  
-    const form = document.getElementById('form_crear_p');
-    const formData = new FormData(form);
-    console.log(form);
-    $.ajax({
-        
-        url: $('#form_crear_p').attr('action'),
-        type: $('#form_crear_p').attr('method'),
-        data: formData,
-        cache:false,
-        processData:false,
-        contentType:false,
-        success: function(response){
-            console.log(response);
-           
-            alert('Entidad registrado correctamente');
-            listado();
-            cerrar_creacion();
 
-        },
-        error:function(error){
-            console.log(error);
-            
-        }
 
-    });
-
-}
 
 //******************************************************************* 
 //REGISTRO USUARIO
