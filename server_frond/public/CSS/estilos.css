@@ -52,7 +52,6 @@
     padding: 10px 0;
 }
 
-<<<<<<< HEAD
 #cantidad {
     max-width: 100px;
 }
@@ -65,12 +64,12 @@
 
 #form {
     padding: 25px;
-=======
-#cantidad{
-    max-width: 100px; 
 }
 
-.pedido{
+#cantidad {
+    max-width: 100px;
+}
+
+.pedido {
     color: black;
->>>>>>> dbca6be7db21586d50a8d0bda9e34937e38674e8
 }
