@@ -86,7 +86,7 @@ function crearPedido() {
         window.alert("asegurate de seleccionar al menos un plato");
     } else {
         var queryString = "?arregloPedido=" + encodeURIComponent(JSON.stringify(arregloPedido));
-        var url = "Pedido.html" + queryString;
+        var url = "http://localhost:4000/Pedidos/" + queryString;
         window.location.href = url;
     }
 }
