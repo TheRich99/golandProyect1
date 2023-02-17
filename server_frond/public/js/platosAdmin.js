@@ -30,8 +30,42 @@ function crear_p(){
     
     }
 
+
+
+    function editar_p(){
+
+
+      
+        const form = document.getElementById('form_editar_p');
+        const formData = new FormData(form);
+        console.log(form);
+        $.ajax({
+            
+            url: $('#form_editar_p').attr('action'),
+            type: $('#form_editar_p').attr('method'),
+            data: formData,
+            cache:false,
+            processData:false,
+            contentType:false,
+            success: function(response){
+                console.log(response);
+               
+                alert('Entidad registrado correctamente');
+                listado();
+                cerrar_edicion();
+    
+            },
+            error:function(error){
+                console.log(error);
+                
+            }
+    
+        });
+    
+    }
+
     function abrir_eliminacionP(id){
-        alert('eliminar '+id);
+        
         var datos = { 'id' :id };
         $.ajax({
             
@@ -46,7 +80,7 @@ function crear_p(){
                
                 alert('plato eliminado correctamente');
                 listado();
-                cerrar_creacion();
+                /* cerrar_e(); */
     
             },
             error:function(error){
@@ -67,8 +101,8 @@ function crear_p(){
         });
     }
     
-    function cerrar_creacion(){
-        $('#crear_plato').modal('hide');
+    function cerrar_edicion(){
+        $('#editar_plato').modal('hide');
     }
 
 
@@ -78,6 +112,24 @@ $(document).ready(function(){
     listado();
 });
 
+
+function abrir_edicion(url,ID,nombre,precio,descripcion){
+    $('#editar_plato').load(url,function(){
+        $("#ID2").val(ID);
+        $("#campoNombre2").val(nombre);
+        $("#precio2").val(precio);
+        $("#cantidad2").val(0);
+        $("#descrip2").val(descripcion);
+        
+        $(this).modal('show');
+        
+    });
+}
+
+    
+function cerrar_creacion(){
+    $('#crear_plato').modal('hide');
+}
 function listado(){
     $.ajax({
         url:"http://localhost:3000/platos/",
@@ -112,7 +164,7 @@ function listado(){
                     <td>$${p.descripcion}</td>
                     
                     <td>
-                        <button onclick=""  class="btn btn-info btn-sm">Editar</button>
+                        <button onclick="abrir_edicion('/public/Platos/modal_plato_editar.html',${p.ID},'${p.nombre}',${p.precio},'${p.descripcion}')"  class="btn btn-info btn-sm">Editar</button>
                         <button onclick="abrir_eliminacionP('${p.ID}');"  class="btn btn-danger btn-sm">Eliminar</button>
                     </td>
             
